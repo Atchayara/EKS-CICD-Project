@@ -11,7 +11,7 @@ stage('Cloning Git') {
 steps {
 checkout([$class: 'GitSCM', branches: [[name: '*/main']],
 doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
-userRemoteConfigs: [[credentialsId: '', url: '']]])
+userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/Atchayara/EKS-CICD-Project.git']]])
 }
 }
 stage ('Build') {
@@ -32,8 +32,8 @@ dockerImage = docker.build registry
 stage('Pushing to ECR') {
 steps{
 script {
-sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 261991889257.dkr.ecr.us-east-1.amazonaws.com'
-sh 'docker push 261991889257.dkr.ecr.us-east-1.amazonaws.com/demo:latest'
+sh 'aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 058264332128.dkr.ecr.ap-south-1.amazonaws.com/demo-project'
+sh 'docker push 058264332128.dkr.ecr.ap-south-1.amazonaws.com/demo-project'
 }
 }
 }
