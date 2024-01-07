@@ -4,14 +4,14 @@ maven 'Maven3'
 }
 agent any
 environment {
-registry = "261991889257.dkr.ecr.us-east-1.amazonaws.com/demo"
+registry = "058264332128.dkr.ecr.ap-south-1.amazonaws.com/demo-project"
 }
 stages {
 stage('Cloning Git') {
 steps {
 checkout([$class: 'GitSCM', branches: [[name: '*/main']],
 doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [],
-userRemoteConfigs: [[credentialsId: '', url: 'https://github.com/yasminjeelani/EKS-CICD.git']]])
+userRemoteConfigs: [[credentialsId: '', url: '']]])
 }
 }
 stage ('Build') {
